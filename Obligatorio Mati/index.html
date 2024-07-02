@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Mascotas</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="styles/index.css">
+    <script defer src="Scripts/index.js"></script>
+</head>
+<body>
+    <header>
+        <h1><img src="https://imgs.search.brave.com/xEMy2jmfNCx_Dh29ykcSAWtLpSLPNQ0uH0p__3aDGNs/rs:fit:860:0:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXMudmV4ZWxzLmNv/bS9tZWRpYS91c2Vy/cy8zLzIwODM0My9p/c29sYXRlZC9wcmV2/aWV3LzIzZTQwZTM1/M2U4NDRhYzE1MmE5/YmUyYjI3M2I0YmM3/LWJvdGVsbGEtZGUt/bWVkaWNpbmEtaWNv/bm8tYmxhbmNvLXkt/bmVncm8ucG5n" alt="logp" width="80px" height="80px">VETERINARIA DR HIBBERT</h1>
+    </header>
+    <main>
+        <section class="container-lg">
+            <legend id="leyendaFormulario"><h2>Agregar mascota</h2></legend>
+            <br>
+            <input type="hidden" id="idMascota" name="idMascota" value="-1" />
+            <div>
+                <label for="nombre">Nombre:</label>
+                <input class="form-control" type="text" id="nombre" name="nombre" />
+            </div>
+            <div>
+                <label for="especie">Especie:</label>
+                <input class="form-control" type="text" id="especie" name="especie" />
+            </div>
+            <div>
+                <label for="raza">Raza:</label>
+                <input class="form-control" type="text" id="raza" name="raza" />
+            </div>
+            <div>
+                <label for="fechaNacimiento">Fecha de nacimiento:</label>
+                <input class="form-control" type="date" id="fechaNacimiento" name="fechaNacimiento" />
+            </div>
+            <div class="btn-group mt-3" role="group">
+                <button id="botonAgregar" class="btn btn-primary">Agregar</button>
+            </div>
+        </section>
+
+        <section class="container-lg mt-5">
+            <h2>Lista de mascotas</h2>
+            <table class="table table-striped align-middle table-hover table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Especie</th>
+                        <th scope="col">Raza</th>
+                        <th scope="col">Fecha de nacimiento</th>
+                        <th scope="col">Eliminar</th>
+                    </tr>
+                </thead>
+                <tbody id="tablaMascotas">
+                    <!-- js para las filas de mascotas -->
+                </tbody>
+            </table>
+        </section>
+    </main>
+
+    <aside class="container-lg mt-5">
+        <h2>Agregar observación</h2>
+        <label for="filtroMascotaObservacion">Seleccionar Mascota:</label>
+        <select id="filtroMascotaObservacion" class="form-select"></select>
+        <form id="observacionForm">
+            <input type="hidden" id="idMascotaObservacion" name="idMascotaObservacion">
+            <label for="titulo">Título:</label>
+            <input class="form-control" type="text" id="titulo" name="titulo" required>
+
+            <label for="detalle">Detalle:</label>
+            <textarea class="form-control" id="detalle" name="detalle" rows="4" required></textarea>
+
+            <label for="peso">Peso (kg):</label>
+            <input class="form-control" type="number" id="peso" name="peso" step="0.01" required>
+
+            <label for="fechaObservacion">Fecha de Observación:</label>
+            <input class="form-control" type="date" id="fechaObservacion" name="fechaObservacion" required>
+
+            <button type="submit" class="btn btn-primary mt-3">Guardar observación</button>
+        </form>
+    </aside>
+
+    <section class="container-lg mt-5">
+        <h2>Listado de Observaciones</h2>
+        <label for="filtroMascotaListado">Filtrar por Mascota:</label> 
+        <select id="filtroMascotaListado" class="form-select"></select>
+        <table id="tablaObservaciones" class="table table-striped align-middle table-hover table-bordered mt-3">
+            <thead>
+                <tr>
+                    <th scope="col">Nombre de la Mascota</th>
+                    <th scope="col">Título</th>
+                    <th scope="col">Detalle</th>
+                    <th scope="col">Peso (kg)</th>
+                    <th scope="col">Fecha de Observación</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- el js para las filas de observaciones -->
+            </tbody>
+        </table>
+    </section>
+    <div id="resumenObservaciones">
+        <h3>Resumen de Observaciones</h3>
+        <p id="totalObservaciones"></p>
+        <table id="tablaResumen" class="table">
+            <thead>
+                <tr>
+                    <th>Mascota</th>
+                    <th>Total Observaciones</th>
+                    <th>Última Medición de Peso</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+</body>
+</html>
